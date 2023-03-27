@@ -4,10 +4,13 @@
   "description": "GymPass style app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "tsx watch src/server.ts",
     "start": "tsx watch build/server.ts",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +19,15 @@
     "@rocketseat/eslint-config": "1.2.0",
     "@types/bcryptjs": "2.4.2",
     "@types/node": "18.15.5",
+    "@vitest/coverage-c8": "0.29.7",
+    "@vitest/ui": "0.29.7",
     "eslint": "8.36.0",
     "prisma": "4.11.0",
     "tsup": "6.7.0",
     "tsx": "3.12.6",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "vite-tsconfig-paths": "4.0.7",
+    "vitest": "0.29.7"
   },
   "dependencies": {
     "@prisma/client": "4.11.0",
