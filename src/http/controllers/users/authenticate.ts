@@ -22,7 +22,21 @@ export async function authenticate(request: FastifyRequest, reply: FastifyReply)
       }
     })
 
-    return reply.status(200).send({
+    const refresehToken = await reply.jwtSign({}, {
+      sign: {
+        sub: user.id,
+        expiresIn: '7d'
+      }
+    })
+
+    return reply.status(200)
+    .setCookie('refreshToken', refresehToken, {
+      path: '/',
+      secure: true,
+      sameSite: true,
+      httpOnly: true
+    })
+    .send({
       token
     })
   } catch (err) {
